@@ -90,7 +90,7 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({
     specific_volume_liquid: Number(specific_volume_liquid),
-    specific_volume_vapor: Number(specific_volume_vapor),
+    specific_volume_vapor: Number(specific_volume_vapor)
     // AGREGA ESTO TEMPORALMENTE PARA VERLO EN EL NAVEGADOR:
   });
 }
