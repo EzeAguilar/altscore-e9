@@ -46,6 +46,12 @@ export async function GET(request: NextRequest) {
 
   const v_critical = 0.0035;
 
+  if (P === P_max) {
+    return NextResponse.json({
+      specific_volume_liquid: v_critical, // 0.0035 exacto
+      specific_volume_vapor: v_critical   // 0.0035 exacto
+    });
+  }
 
 
   // 3. Cálculos de Interpolación Lineal
@@ -81,14 +87,6 @@ export async function GET(request: NextRequest) {
   const specific_volume_liquid = v_liq_min + (slope_liq * (P - P_min));
 
   const specific_volume_vapor = v_vap_min + (slope_vap * (P - P_min));
-
-  // --- DEBUGGING: Imprimir en la terminal de VS Code ---
-  console.log("=== DEBUG PRESSURE: " + P + " ===");
-  console.log("Pendiente Líquido:", slope_liq);
-  console.log("Pendiente Vapor:", slope_vap);
-  console.log("Resultado Liq:", specific_volume_liquid);
-  console.log("Resultado Vap:", specific_volume_vapor);
-  console.log("================================");
 
   return NextResponse.json({
     specific_volume_liquid: Number(specific_volume_liquid),
