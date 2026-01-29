@@ -92,12 +92,5 @@ export async function GET(request: NextRequest) {
     specific_volume_liquid: Number(specific_volume_liquid),
     specific_volume_vapor: Number(specific_volume_vapor),
     // AGREGA ESTO TEMPORALMENTE PARA VERLO EN EL NAVEGADOR:
-    debug_info: {
-        pressure_input: P,
-        slope_liq: slope_liq,
-        slope_vap: slope_vap,
-        delta_total: delta_P,
-        delta_calculated: P - P_min
-    }
   });
 }
